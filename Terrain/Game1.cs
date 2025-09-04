@@ -8,7 +8,7 @@ namespace Terrain;
 
 public class Game1 : Core
 {
-    public Game1() : base("Terrain", 1280, 720, false)
+    public Game1() : base("Terrain", 800, 600, false)
     {
     }
 
@@ -22,7 +22,8 @@ public class Game1 : Core
     protected override void LoadContent()
     {
         // TODO: use this.Content to load your game content here
-        base.LoadContent();
+        // base.LoadContent();
+        _effect = Content.Load<Effect>("effects");
     }
 
     protected override void Update(GameTime gameTime)
@@ -37,9 +38,15 @@ public class Game1 : Core
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Color.Crimson);
 
         // TODO: Add your drawing code here
+        _effect.CurrentTechnique = _effect.Techniques["Pretransformed"];
+
+        foreach (EffectPass pass in _effect.CurrentTechnique.Passes)
+        {
+            pass.Apply();
+        }
 
         base.Draw(gameTime);
     }
