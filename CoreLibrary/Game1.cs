@@ -33,6 +33,7 @@ public class Core : Game
     /// Gets the content manager used to load global assets.
     /// </summary>
     public static new ContentManager Content { get; private set; }
+    public static Effect _effect;
 
     /// <summary>
     /// Creates a new Core instance.
