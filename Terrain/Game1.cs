@@ -23,7 +23,8 @@ public class Game1 : Core
     {
         // TODO: use this.Content to load your game content here
         // base.LoadContent();
-        _effect = Content.Load<Effect>("effects");
+        Effect = Content.Load<Effect>("effects");
+        SetUpVertices();
     }
 
     protected override void Update(GameTime gameTime)
@@ -41,11 +42,12 @@ public class Game1 : Core
         GraphicsDevice.Clear(Color.Crimson);
 
         // TODO: Add your drawing code here
-        _effect.CurrentTechnique = _effect.Techniques["Pretransformed"];
+        Effect.CurrentTechnique = Effect.Techniques["Pretransformed"];
 
-        foreach (EffectPass pass in _effect.CurrentTechnique.Passes)
+        foreach (EffectPass pass in Effect.CurrentTechnique.Passes)
         {
             pass.Apply();
+            GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vertices, 0, 1, VertexPositionColor.VertexDeclaration);
         }
 
         base.Draw(gameTime);

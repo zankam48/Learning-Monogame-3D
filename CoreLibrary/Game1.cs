@@ -33,7 +33,8 @@ public class Core : Game
     /// Gets the content manager used to load global assets.
     /// </summary>
     public static new ContentManager Content { get; private set; }
-    public static Effect _effect;
+    public static Effect Effect;
+    public static VertexPositionColor[] Vertices;
 
     /// <summary>
     /// Creates a new Core instance.
@@ -88,5 +89,17 @@ public class Core : Game
 
         // Create the sprite batch instance.
         SpriteBatch = new SpriteBatch(GraphicsDevice);
+    }
+
+    public void SetUpVertices()
+    {
+        Vertices = new VertexPositionColor[3];
+
+        Vertices[0].Position = new Vector3(-0.5f, -0.5f, 0f);
+        Vertices[0].Color = Color.Red;
+        Vertices[1].Position = new Vector3(0, 0.5f, 0f);
+        Vertices[1].Color = Color.Green;
+        Vertices[2].Position = new Vector3(0.5f, -0.5f, 0f);
+        Vertices[2].Color = Color.Yellow;
     }
 }
