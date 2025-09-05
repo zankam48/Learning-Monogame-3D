@@ -1,23 +1,21 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using MonoGameLibrary;
 
 namespace Terrain;
+
 public class Camera
 {
-    public Matrix ViewMatrix { get; set; }
-    public Matrix ProjectionMatrix { get; set; }
-    private GraphicsDevice _device;
+    public Matrix ViewMatrix { get; private set; }
+    public Matrix ProjectionMatrix { get; private set; }
 
     public Camera(GraphicsDevice device)
     {
-        _device = device;
+        SetUpCamera(device);
     }
 
-    public void SetUpCamera()
+    private void SetUpCamera(GraphicsDevice device)
     {
         ViewMatrix = Matrix.CreateLookAt(new Vector3(0, 0, 50), new Vector3(0, 0, 0), new Vector3(0, 1, 0));
-        ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, _device.Viewport.AspectRatio, 1.0f, 300.0f);
+        ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, device.Viewport.AspectRatio, 1.0f, 300.0f);
     }
 }
