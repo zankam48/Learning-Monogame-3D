@@ -85,21 +85,21 @@ public class Core : Game
 
         // Set the core's graphics device to a reference of the base Game's
         // graphics device.
-        GraphicsDevice = base.GraphicsDevice;
+        GraphicsDevice = Graphics.GraphicsDevice;
 
         // Create the sprite batch instance.
         SpriteBatch = new SpriteBatch(GraphicsDevice);
     }
 
-    public void SetUpVertices()
-    {
-        Vertices = new VertexPositionColor[3];
+    // public void SetUpVertices()
+    // {
+    //     Vertices = new VertexPositionColor[3];
 
-        Vertices[0].Position = new Vector3(-0.5f, -0.5f, 0f);
-        Vertices[0].Color = Color.Red;
-        Vertices[1].Position = new Vector3(0, 0.5f, 0f);
-        Vertices[1].Color = Color.Green;
-        Vertices[2].Position = new Vector3(0.5f, -0.5f, 0f);
-        Vertices[2].Color = Color.Yellow;
-    }
+    //     Vertices[0].Position = new Vector3(0f, 0f, 0f);
+    //     Vertices[0].Color = Color.Red;
+    //     Vertices[1].Position = new Vector3(10f, 10f, 0f);
+    //     Vertices[1].Color = Color.Yellow;
+    //     Vertices[2].Position = new Vector3(10f, 0f, -5f);
+    //     Vertices[2].Color = Color.Green;
+    // }
 }
