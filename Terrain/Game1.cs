@@ -12,6 +12,7 @@ public class Game1 : Game
     private Effect _effect;
     private Camera _camera;
     private TriangleRenderer _triangleRenderer;
+    private float _angle = 0f;
 
     public Game1()
     {
@@ -51,6 +52,7 @@ public class Game1 : Game
             Exit();
 
         // TODO: Add your update logic here
+        _angle += 0.005f;
 
         base.Update(gameTime);
     }
@@ -63,8 +65,11 @@ public class Game1 : Game
         rs.CullMode = CullMode.None;
         _device.RasterizerState = rs;
 
+        Vector3 rotAxis = new Vector3(3*_angle, _angle, 2*_angle);
+        rotAxis.Normalize();
+        Matrix worldMatrix = Matrix.CreateTranslation(-20.0f / 3.0f, -10.0f / 3.0f, 0) * Matrix.CreateFromAxisAngle(rotAxis, _angle);
         // Render the triangle
-        _triangleRenderer.Draw(_camera.ViewMatrix, _camera.ProjectionMatrix);
+        _triangleRenderer.Draw(_camera.ViewMatrix, _camera.ProjectionMatrix, worldMatrix);
 
         base.Draw(gameTime);
     }

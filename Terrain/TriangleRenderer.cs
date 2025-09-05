@@ -28,12 +28,14 @@ public class TriangleRenderer
         _vertices[2].Color = Color.Green;
     }
 
-    public void Draw(Matrix viewMatrix, Matrix projectionMatrix)
+    public void Draw(Matrix viewMatrix, Matrix projectionMatrix, Matrix? worldMatrix)
     {
         _effect.CurrentTechnique = _effect.Techniques["ColoredNoShading"];
         _effect.Parameters["xView"].SetValue(viewMatrix);
         _effect.Parameters["xProjection"].SetValue(projectionMatrix);
-        _effect.Parameters["xWorld"].SetValue(Matrix.Identity);
+
+        Matrix world = worldMatrix ?? Matrix.Identity;
+        _effect.Parameters["xWorld"].SetValue(world);
 
         foreach (EffectPass pass in _effect.CurrentTechnique.Passes)
         {

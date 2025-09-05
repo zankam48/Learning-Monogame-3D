@@ -6,7 +6,7 @@ namespace Terrain;
 public class Camera
 {
     public Matrix ViewMatrix { get; private set; }
-    public Matrix ProjectionMatrix { get; private set; }
+    public Matrix ProjectionMatrix { get; set; }
 
     public Camera(GraphicsDevice device)
     {
