@@ -63,11 +63,13 @@ public class Game1 : Game
 
         RasterizerState rs = new RasterizerState();
         rs.CullMode = CullMode.None;
+        rs.FillMode = FillMode.WireFrame;
         _device.RasterizerState = rs;
 
         Vector3 rotAxis = new Vector3(3*_angle, _angle, 2*_angle);
         rotAxis.Normalize();
-        Matrix worldMatrix = Matrix.CreateTranslation(-20.0f / 3.0f, -10.0f / 3.0f, 0) * Matrix.CreateFromAxisAngle(rotAxis, _angle);
+        // Matrix worldMatrix = Matrix.CreateTranslation(-20.0f / 3.0f, -10.0f / 3.0f, 0) * Matrix.CreateFromAxisAngle(rotAxis, _angle);
+        Matrix worldMatrix = Matrix.Identity;
         // Render the triangle
         _triangleRenderer.Draw(_camera.ViewMatrix, _camera.ProjectionMatrix, worldMatrix);
 
